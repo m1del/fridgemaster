@@ -1,8 +1,9 @@
 const Header = () => {
   return (
-    <div>
+    <header class='header'>
       <h1>Fridge Master</h1>  
-    </div>
+      <button className='btn'>Add</button>
+    </header>
   )
 }
 
