@@ -1,9 +1,10 @@
 import React from 'react';
-import {observer} from 'mobx-react';
+import { observer } from 'mobx-react';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import UserStore from './stores/UserStore';
 import LoginForm from './components/LoginForm';
 import SubmitButton from './components/SubmitButton';
+import Backdrop2 from './components/Backdrop2';
 import './App.css';
 
 const theme = createTheme({
@@ -120,7 +121,8 @@ class App extends React.Component {
     return(
       <div className="App">
         <ThemeProvider theme = {theme}>
-          <LoginForm />
+          <LoginForm/>
+          <Backdrop2/>
         </ThemeProvider>
       </div>
     );

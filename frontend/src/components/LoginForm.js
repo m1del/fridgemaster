@@ -3,8 +3,6 @@ import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 import UserStore from'../stores/UserStore';
 import { Grid } from '@material-ui/core';
-import { Box } from '@material-ui/core';
-
 
 class LoginForm extends React.Component {
 
