@@ -15,13 +15,15 @@ console.log(fridge);
 function DisplayLogo() {
     return <img src={logo}
             style = {{ position: 'relative',
-                        top: '30px',
-                        left: '30px'}}/>;
+                        top: '5px',
+                        left: '10px'}}/>;
 }
 
 function DisplayFridge() {
     return <img src = {fridge}
             style = {{ display: 'flex',
+                    top: 'center',
+                    
                     justifyContent: 'center'}}/>;
 }
 
@@ -38,8 +40,14 @@ const App = () => {
     return (
         <div className = 'App'
             style = {myStyle}>
+            <AppBar position = 'relative'
+                    style = {{height: '10.5%',
+                              backgroundColor: '#616265'}}>
+                <Toolbar>
+                    <DisplayLogo/>
+                </Toolbar>
+            </AppBar>
             <DisplayFridge/>
-            <DisplayLogo/>
             
         </div>
     );
