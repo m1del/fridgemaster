@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import Form from './components/Form';
-import React from 'react';
 import logo from './images/fridge-logo.png';
 import fridge from './images/fridge-image.png';
 import { makeStyles, Typography, AppBar, Card, CardActions, 
