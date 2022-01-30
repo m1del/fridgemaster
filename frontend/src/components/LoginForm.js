@@ -2,6 +2,9 @@ import React from 'react';
 import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 import UserStore from'../stores/UserStore';
+import { Grid } from '@material-ui/core';
+import { Box } from '@material-ui/core';
+
 
 class LoginForm extends React.Component {
 
@@ -10,7 +13,7 @@ class LoginForm extends React.Component {
     this.state ={
       username: '',
       password: '',
-      buttonDisabled:false
+      buttonDisabled: false
     }
   }
 
@@ -78,27 +81,36 @@ class LoginForm extends React.Component {
   render() {
     return(
       <div className="loginForm">
-        Log In
 
-        <InputField
-          type='text'
-          placeholder='Username'
-          value={this.state.username ? this.state.username : ''}
-          onChange={(val) => this.setInputValue('username', val)}
-        />
+        <Grid container spacing = {2}>
+          <Grid item xs = {12}>
+            <InputField
+              type='text'
+              placeholder='Username'
+              value={this.state.username ? this.state.username : ''}
+              onChange={(val) => this.setInputValue('username', val)}
+            />
+          </Grid>
 
-        <InputField
-          type='password'
-          placeholder='Password'
-          value={this.state.password ? this.state.password : ''}
-          onChange={(val) => this.setInputValue('password', val)}
-        />
+          <Grid item xs={12}>
+            <InputField
+              type='password'
+              placeholder='Password'
+              value={this.state.password ? this.state.password : ''}
+              onChange={(val) => this.setInputValue('password', val)}
+            />
+          </Grid>
 
-        <SubmitButton
-          text='login'
-          disabled={this.state.buttonDisabled}
-          onClick={ () => this.doLogin() }
-        />
+          <Grid item xs={12}>
+            <SubmitButton
+              text='login'
+              disabled={this.state.buttonDisabled}
+              onClick={ () => this.doLogin() }
+            />
+          </Grid>
+
+        </Grid>
+        
       </div>
     );
   }

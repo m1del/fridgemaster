@@ -1,12 +1,32 @@
 import React from 'react';
 import {observer} from 'mobx-react';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import UserStore from './stores/UserStore';
 import LoginForm from './components/LoginForm';
 import SubmitButton from './components/SubmitButton';
 import './App.css';
 
-class App extends React.Component {
+const theme = createTheme({
+  palette: {
+    primary: {
+      main:"#2e1667",
+    },
+  },
+  typography: {
+    fontFamily: [
+      'Montserrat'
+    ],
+    h4: {
+      fontWeight: 600,
+      fontSize: 50,
+      lineHeight: '2rem',
+      },
+  },
+});
 
+
+class App extends React.Component {
+  
   //Define API calls
 
   async componentDidMount()
@@ -99,8 +119,9 @@ class App extends React.Component {
     }
     return(
       <div className="App">
-
-        <LoginForm />
+        <ThemeProvider theme = {theme}>
+          <LoginForm />
+        </ThemeProvider>
       </div>
     );
   }
