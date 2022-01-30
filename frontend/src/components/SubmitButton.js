@@ -7,7 +7,6 @@ class SubmitButton extends React.Component {
       <div className="submitButton">
 
         <Button 
-          className = {classes.root}
           size = "small"
           variant = "contained"
           color = "#e76666"
