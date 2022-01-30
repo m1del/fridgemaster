@@ -10,9 +10,9 @@ const FormSignup = ({submitForm}) => {
   return (
       <div className='form-content-right'>
           <form className='form' onSubmit={handleSubmit}>
-              <h1>
-                  Get in the fridge boy
-              </h1>
+              <h2>
+                  Register
+              </h2>
               <div className='form-inputs'>
                   <label htmlFor='username'
                   className='form-label'>
