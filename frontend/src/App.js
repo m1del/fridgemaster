@@ -1,132 +1,47 @@
-import React from 'react';
-import { observer } from 'mobx-react';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import UserStore from './stores/UserStore';
-import LoginForm from './components/LoginForm';
-import SubmitButton from './components/SubmitButton';
-import Backdrop2 from './components/Backdrop2';
-import './App.css';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main:"#2e1667",
-    },
-  },
-  typography: {
-    fontFamily: [
-      'Montserrat'
-    ],
-    h4: {
-      fontWeight: 600,
-      fontSize: 50,
-      lineHeight: '2rem',
-      },
-  },
-});
+import React, { Component } from 'react';
+import { makeStyles, Typography, AppBar, Card, CardActions, 
+         CardContent, CardMedia, CssBaseline, 
+         Grid, Toolbar, Container } 
+         from '@material-ui/core';
+import logo from './images/fridge-logo.png';
+import fridge from './images/fridge-image.png';
+import { render } from 'react-dom';
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 
 
-class App extends React.Component {
-  
-  //Define API calls
+console.log(logo);
+console.log(fridge);
 
-  async componentDidMount()
-  {
-    try{
-      let res = await fetch('/isLoggedIn', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-
-      let result = await res.json();
-
-      if(result && result.success) {
-        UserStore.loading = false;
-        UserStore.isLoggedIn = true;
-        UserStore.username = result.username;
-      }
-
-      else{
-        UserStore.loading = false;
-        UserStore.isLoggedIn = false;
-      }
-
-    }
-    catch(e){
-      UserStore.loading = false;
-      UserStore.isLoggedIn = false;
-    }
-  }
-
-
-  //Define Logout Function
-  async doLogout()
-  {
-    try{
-      let res = await fetch('/logout', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-
-      let result = await res.json();
-
-      if(result && result.success) {
-        UserStore.isLoggedIn = false;
-        UserStore.username = '';
-      }
-    }
-    catch(e){
-      console.log(e)
-    }
-  }
-
-  render() {
-
-    if(UserStore.loading) {
-      return (
-        <div className='App'>
-          <div className='=container'>
-            Loading, please wait...
-          </div>
-        </div>
-
-      );
-    }
-
-    else {
-      
-      if(UserStore.isLoggedIn) {
-        return(
-          <div className='=App'>
-            <div className='container'>
-              Welcome{UserStore.username}
-
-              <SubmitButton
-                text={'Log out'}
-                disabled={false}
-                onClick={ ()=>this.doLogout() }
-              />
-            </div>
-          </div>
-
-        );
-      }
-    }
-    return(
-      <div className="App">
-        <ThemeProvider theme = {theme}>
-          <LoginForm/>
-          <Backdrop2/>
-        </ThemeProvider>
-      </div>
-    );
-  }
+function DisplayLogo() {
+    return <img src={logo}
+            style = {{ position: 'relative',
+                        top: '30px',
+                        left: '30px'}}/>;
 }
 
-export default observer(App);
+function DisplayFridge() {
+    return <img src = {fridge}
+            style = {{ display: 'flex',
+                    justifyContent: 'center'}}/>;
+}
+
+const App = () => {
+    const myStyle = {
+        backgroundColor: '#616265',
+        height: '100.5vh',
+        marginTop: '-10px',
+        marginBottom: '-10px',
+        marginLeft: '-10px',
+        marginRight: '-10px',
+        backgroundSize: 'cover',
+    };
+    return (
+        <div className = 'App'
+            style = {myStyle}>
+            <DisplayFridge/>
+            <DisplayLogo/>
+            
+        </div>
+    );
+}
+export default App;
